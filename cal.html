@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      .result {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+      }
+      .res {
+        display: flex;
+      }
+      .area_cal {
+        width: fit-content;
+      }
+      #output {
+        display: inline-block;
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="area_cal">
+      <h1>Area calculator</h1>
+      <div class="result">
+        <p>Result: <span id="output"></span></p>
+        <button id="storeBtn">Store</button>
+        <button id="clearBtn">Clear</button>
+      </div>
+      <div class="">
+        <input type="number" id="widthInput" name="width" />
+        <input type="number" id="breadthInput" name="breadth" />
+        <button id="calcBtn">Calculate</button>
+      </div>
+      <ul id="recordLists"></ul>
+    </div>
+    <script>
+      const output = document.getElementById("output");
+      const storeBtn = document.getElementById("storeBtn");
+      const clearBtn = document.getElementById("clearBtn");
+      const widthInput = document.getElementById("widthInput");
+      const breadthInput = document.getElementById("breadthInput");
+      const calcBtn = document.getElementById("calcBtn");
+      const recordLists = document.getElementById("recordLists");
+      const clear = () => {
+        output.innerHTML = null;
+        widthInput.value = null;
+        breadthInput.value = null;
+      };
+      calcBtn.onclick = () => {
+        const area = widthInput.valueAsNumber * breadthInput.valueAsNumber;
+        output.innerHTML = `${area} ft<sup>2</sup>`;
+      };
+      clearBtn.onclick = clearAll;
+      storeBtn.onclick = () => {
+        recordLists.innerHTML += `<li>${widthInput.value}ft * ${breadthInput.value}ft= ${output.innerHTML} ft<sup>2</sup></li>`;
+        clearAll();
+      };
+    </script>
+  </body>
+</html>

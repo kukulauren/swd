@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="heading">Min Ga Lar Par</h1>
+    <p id="para">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, iure?
+    </p>
+    <ul id="lists">
+      <li id="list1">apple</li>
+      <li id="list2">orange</li>
+      <li id="list3">mango</li>
+    </ul>
+    <input type="text" id="textInput" />
+    <button id="btn">Click me</button>
+    <input type="date" id="dateInput" />
+    <script>
+      const heading = document.getElementById("heading");
+      const para = document.getElementById("para");
+      const lists = document.getElementById("lists");
+      const list2 = document.getElementById("list2");
+      const textInput = document.getElementById("textInput");
+      const dateInput = document.getElementById("dateInput");
+      const btn = document.getElementById("btn");
+      console.dir(textInput);
+      console.dir(btn);
+      console.log(heading);
+      console.dir(heading);
+      console.log(para);
+      console.log(lists);
+      console.log(list2);
+      const showMyName=()=> {
+        console.log("lmno")}
+    btn.addEventListener("click",showMyName)
+    //   btn.onclick=showMyName
+      heading.innerText="Nay Kaung Lar"
+    </script>
+  </body>
+</html>

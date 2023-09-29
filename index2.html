@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      #app {
+        width: fit-content;
+        margin: 50px auto;
+        font-family: 'Roboto', sans-serif;
+      }
+      .exchangeBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      #arrowdown {
+        display: block;
+        margin: 10px auto;
+        width: fit-content;
+      }
+      .calBox {
+        display: flex;
+      }
+      .calBox input {
+        width: 100%;
+      }
+      .btnBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      select{
+        margin-left: 10px;
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app">
+      <h1>Exchange Rate Calculator</h1>
+      <!-- exchangeBox  -->
+      <div class="exchangeBox">
+        <div class="exchangeBox">
+          <p>From</p>
+          <select name="" id="rate">
+            <option value="USD" id="USD">USD</option>
+            <option value="SGD" id="SGD">SGD</option>
+            <option value="EUR" id="EUR">EUR</option>
+          </select>
+        </div>
+        <div class="calBox">
+          <input type="number" id="inputAmount" />
+          <button id="calBtn">Calculate</button>
+        </div>
+      </div>
+      <!-- downarrow -->
+      <i class="fa-solid fa-arrow-down" id="arrowdown"></i>
+      <!-- result part  -->
+      <div class="result">
+        <p>Result: <span id="exchangedOutcome"></span></p>
+        <div class="btnBox">
+          <p>Effective Exchange Rate: <span id="eer"></span></p>
+          <div class="">
+            <button id="storeBtn">Store</button>
+            <button id="clearBtn">Clear</button>
+          </div>
+        </div>
+      </div>
+      <ul id="recordLists"></ul>
+    </main>
+    <script>
+      const rates = {
+        USD: 3400,
+        SGD: 2500,
+        EUR: 3500,
+      };
+      const amount = document.getElementById("inputAmount");
+      const rate = document.getElementById("rate");
+      const exchangedOutcome = document.getElementById("exchangedOutcome");
+      const calBtn = document.getElementById("calBtn");
+      const storeBtn = document.getElementById("storeBtn");
+      const clearBtn = document.getElementById("clearBtn");
+      const eer = document.getElementById("eer");
+      const recordLists = document.getElementById("recordLists");
+      const exchangeToMMK = () => {
+        let result = amount.value * rates[rate.value];
+        exchangedOutcome.innerText = `${result} MMK`;
+        eer.innerText = rates[rate.value];
+      };
+      const clear = () => {
+        amount.value = null;
+        exchangedOutcome.innerText = null;
+        eer.innerText = null;
+      };
+      calBtn.onclick = () => {
+        exchangeToMMK();
+      };
+      clearBtn.onclick = () => {
+        recordLists.innerHTML = null;
+        clear();
+      };
+      storeBtn.onclick = () => {
+        recordLists.innerHTML += `<li>${amount.value} ${rate.value}* ${
+rates[rate.value] 
+        } 	(EER)= ${exchangedOutcome.innerText}</li>`;
+        clear();
+      };
+    </script>
+  </body>
+</html>
